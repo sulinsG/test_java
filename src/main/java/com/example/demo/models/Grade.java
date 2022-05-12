@@ -31,7 +31,7 @@ public class Grade {
 	private long IdG;
 	
 	@Column(name="Value")
-	private String value;
+	private int value;
 			
 	@ManyToOne
 	@JoinColumn(name = "IdSt")
@@ -41,7 +41,7 @@ public class Grade {
 	@JoinColumn(name = "IdSbj")
 	private Subject subject;
 
-	public Grade(String value, Student student, Subject subject) {
+	public Grade(int value, Student student, Subject subject) {
 		//super();
 		setValue(value);
 		setStudent(student);;
