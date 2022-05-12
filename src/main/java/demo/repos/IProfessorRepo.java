@@ -1,6 +1,7 @@
 package demo.repos;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.models.Professor;
 
@@ -9,4 +10,3 @@ public interface IProfessorRepo extends CrudRepository<Professor, Integer> {
 }
 
 
-//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

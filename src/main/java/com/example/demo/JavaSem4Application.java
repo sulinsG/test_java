@@ -22,8 +22,8 @@ public class JavaSem4Application {
 	public static void main(String[] args) {
 		SpringApplication.run(JavaSem4Application.class, args);
 	}
-
-	@Bean	// ar so anotaciju, funkcija izpildisies automatiski, startejot projektu
+	// ar so anotaciju, funkcija izpildisies automatiski, startejot projektu
+	@Bean	
 	public CommandLineRunner testDB(IProfessorRepo profRepo, IStudentRepo studRepo,
 			ISubjectRepo subjrepo, IGradeRepo gradeRepo)
 	{
