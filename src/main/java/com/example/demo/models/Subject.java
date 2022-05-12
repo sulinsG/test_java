@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -49,12 +51,19 @@ public class Subject {
 	//
 	
 	
-	
+	/*
 	//viens-pret-viens
 	@OneToOne
 	@JoinColumn(name = "IdPr")
 	private Professor professor;
-
+*/
+	
+	@ManyToMany
+	@JoinTable(joinColumns = 
+	@JoinColumn(name="IdSbj"), inverseJoinColumns = @JoinColumn(name="IdPr"))
+	private Collection<Professor> professors;
+	
+	
 	
 	@OneToMany(mappedBy = "subject")
 	@ToString.Exclude
@@ -68,11 +77,11 @@ public class Subject {
 
 
 
-	public Subject(String title, int creditPoints, Professor professor) {
+	public Subject(String title, int creditPoints, Collection<Professor> professor) {
 		super();
 		this.title = title;
 		this.creditPoints = creditPoints;
-		this.professor = professor;
+		this.professors = professor;
 	}
 	
 

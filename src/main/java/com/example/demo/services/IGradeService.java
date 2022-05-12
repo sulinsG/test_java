@@ -12,9 +12,9 @@ public interface IGradeService {
 	
 	ArrayList<Grade> getAllGradesBySubject(Subject subject) throws Exception;
 	
-	Product readById(int id) throws Exception;
+//	Product readById(int id) throws Exception;
 	
-	boolean updateById(int id, Product tmp);
+//	boolean updateById(int id, Product tmp);
 	
 	void deleteById(int id) throws Exception;
 	

@@ -1,10 +1,15 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -49,10 +54,20 @@ public class Professor {
 	
 	
 	//viens-pret-viens
+	/*
 	@OneToOne(mappedBy = "professor")
 	@ToString.Exclude
 	private Subject subject;
+	*/
 	
+	@ManyToMany(mappedBy = "professors")
+	@ToString.Exclude
+	private Collection<Subject> subjects = new ArrayList<Subject>();
+	
+	public void addNewSubject(Subject sub)
+	{
+		subjects.add(sub);
+	}
 
 	
 	//2. get un set no lombok

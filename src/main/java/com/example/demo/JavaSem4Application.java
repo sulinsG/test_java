@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,11 +12,10 @@ import com.example.demo.models.Grade;
 import com.example.demo.models.Professor;
 import com.example.demo.models.Student;
 import com.example.demo.models.Subject;
-
-import demo.repos.IGradeRepo;
-import demo.repos.IProfessorRepo;
-import demo.repos.IStudentRepo;
-import demo.repos.ISubjectRepo;
+import com.example.demo.repos.IGradeRepo;
+import com.example.demo.repos.IProfessorRepo;
+import com.example.demo.repos.IStudentRepo;
+import com.example.demo.repos.ISubjectRepo;
 
 @SpringBootApplication
 public class JavaSem4Application {
@@ -31,6 +32,8 @@ public class JavaSem4Application {
 			
 			@Override
 			public void run(String... args) throws Exception {
+				
+				
 				Student st1 = new Student("Janis", "Berzins");
 				Student st2 = new Student("Baiba", "Jauka");
 				studRepo.save(st1);
@@ -42,11 +45,19 @@ public class JavaSem4Application {
 				profRepo.save(prof1);
 				profRepo.save(prof2);
 			
-				Subject subj1 = new Subject("JAVA", 4, prof1);
-				Subject subj2 = new Subject("Matematika", 2, prof2);
+				Subject subj1 = new Subject("JAVA", 4, Arrays.asList(prof1,prof2));
+				Subject subj2 = new Subject("Matematika", 2, Arrays.asList(prof2));
 				
 				subjrepo.save(subj1);
 				subjrepo.save(subj2);
+				
+				
+				prof1.addNewSubject(subj1);
+				prof1.addNewSubject(subj2);
+				prof2.addNewSubject(subj2);
+				profRepo.save(prof1);
+				profRepo.save(prof2);
+				
 				
 				gradeRepo.save(new Grade(5,st1,subj1));
 				gradeRepo.save(new Grade(7,st1,subj2));
