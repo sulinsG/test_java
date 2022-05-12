@@ -1,0 +1,17 @@
+<html xlmns:th="http://www.thymeleaf.org">
+
+<body>
+	<p> Info par produktiem </p>
+	<table>
+		<tr th:each="prod : ${package}">
+			<td th:text="${prod.getTitle()}" h </td>
+			<td th:text="${prod.getDescription()}"> </td>
+			<td th:text="${prod.getPrice()}"> </td>
+			<td th:text="${prod.getQuantity()}"> </td>
+		</tr>
+
+	</table>
+
+</body>
+
+</html>
